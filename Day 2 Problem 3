@@ -1,0 +1,30 @@
+Problem 3 — Student Registration Form
+
+<form>
+  <label>
+    Name:
+    <input type="text" required>
+  </label><br><br>
+
+  <label>
+    Email:
+    <input type="email" required>
+  </label><br><br>
+
+  <label>
+    Phone:
+    <input type="tel" pattern="[0-9]{10}" required>
+  </label><br><br>
+
+  <label>
+    Age:
+    <input type="number" min="18" max="60" required>
+  </label><br><br>
+
+  <label>
+    Date of Birth:
+    <input type="date" required>
+  </label><br><br>
+
+  <button type="submit">Submit</button>
+</form>
