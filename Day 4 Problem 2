@@ -1,0 +1,26 @@
+Problem 2 — Student Grade Evaluator (if–else)
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+let marks = 68;
+let grade;
+
+if (marks >= 75) {
+  grade = "Grade A";
+} else if (marks >= 60) {
+  grade = "Grade B";
+} else if (marks >= 40) {
+  grade = "Grade C";
+} else {
+  grade = "Fail";
+}
+
+console.log(grade);
+document.write(grade);
+</script>
+
+</body>
+</html>
