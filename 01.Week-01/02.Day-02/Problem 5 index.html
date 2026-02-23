@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Enrollment</title>
+</head>
+<body>
+
+<header>
+    <h1>Course Enrollment Form</h1>
+</header>
+
+<section>
+    <form action="#" method="post">
+
+        <!-- Enrollment Progress -->
+        <p>
+            Enrollment Completion:
+            <progress value="60" max="100"></progress>
+        </p>
+
+        <!-- Email -->
+        <label for="email">Email:</label><br>
+        <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="user@example.com"
+            required
+        >
+        <br><br>
+
+        <!-- Course Selection with Datalist -->
+        <label for="course">Select Course:</label><br>
+        <input
+            type="text"
+            id="course"
+            name="course"
+            list="course-list"
+            placeholder="Start typing course name"
+            required
+        >
+
+        <datalist id="course-list">
+            <option value="HTML Basics">
+            <option value="CSS Fundamentals">
+            <option value="JavaScript Essentials">
+            <option value="Web Development Bootcamp">
+        </datalist>
+        <br><br>
+
+        <!-- Skill Level Meter -->
+        <label for="skill">Skill Level:</label><br>
+        <meter
+            id="skill"
+            min="0"
+            max="100"
+            low="30"
+            high="70"
+            optimum="90"
+            value="50"
+        ></meter>
+        <p>Beginner → Advanced</p>
+
+        <!-- Experience (Range) -->
+        <label for="experience">Years of Experience:</label><br>
+        <input
+            type="range"
+            id="experience"
+            name="experience"
+            min="0"
+            max="10"
+            value="2"
+        >
+        <br><br>
+
+        <!-- Age -->
+        <label for="age">Age:</label><br>
+        <input
+            type="number"
+            id="age"
+            name="age"
+            min="16"
+            max="65"
+            required
+        >
+        <br><br>
+
+        <input type="submit" value="Enroll">
+
+    </form>
+</section>
+
+<footer>
+    <p>Online Learning Platform</p>
+</footer>
+
+</body>
+</html>
