@@ -1,0 +1,57 @@
+/* General page styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* Text styling */
+h1 {
+    color: #2c3e50;
+    text-align: center;
+}
+
+h2 {
+    color: #34495e;
+}
+
+p {
+    color: #555;
+    font-size: 16px;
+}
+
+/* Section with background and border */
+.info-box {
+    background-color: #e3f2fd;
+    border: 2px solid #2196f3;
+    padding: 20px;
+    margin: 20px;
+}
+
+/* Box model demonstration */
+.box-model-demo {
+    background-color: #ffe0b2;
+    border: 2px dashed #ff9800;
+    padding: 30px;
+    margin: 40px;
+}
+
+/* Form styling */
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #ccc;
+    width: 300px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+}
+
+input[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
