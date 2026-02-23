@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">Home</a> |
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <h1>Welcome to Our Website</h1>
+    <p>This is the home page.</p>
+
+    <h2>Registration Form</h2>
+
+    <form action="#" method="post">
+        <label>
+            Name:
+            <input type="text" name="name" placeholder="Enter your name" required>
+        </label>
+        <br><br>
+
+        <label>
+            Email:
+            <input type="email" name="email" placeholder="Enter your email" required>
+        </label>
+        <br><br>
+
+        <label>
+            Password:
+            <input type="password" name="password" placeholder="Enter password" required>
+        </label>
+        <br><br>
+
+        <p>Gender:</p>
+        <label>
+            <input type="radio" name="gender" value="male" required> Male
+        </label>
+        <label>
+            <input type="radio" name="gender" value="female"> Female
+        </label>
+        <br><br>
+
+        <label>
+            Course:
+            <select name="course" required>
+                <option value="">Select a course</option>
+                <option value="html">HTML</option>
+                <option value="css">CSS</option>
+                <option value="javascript">JavaScript</option>
+            </select>
+        </label>
+        <br><br>
+
+        <input type="submit" value="Register">
+    </form>
+
+</body>
+</html>
