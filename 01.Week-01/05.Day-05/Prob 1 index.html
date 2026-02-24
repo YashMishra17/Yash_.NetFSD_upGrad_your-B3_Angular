@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Greeting Generator</title>
+</head>
+<body>
+
+    <h1>Greeting Generator</h1>
+
+    <!-- Input box -->
+    <input type="text" id="username" placeholder="Enter your name">
+
+    <!-- Button -->
+    <button onclick="generateGreeting()">Generate Greeting</button>
+
+    <!-- Output -->
+    <p id="greeting"></p>
+
+    <script>
+        // Function using function keyword
+        function generateGreeting() {
+            // Get name from input
+            let name = document.getElementById("username").value;
+
+            // Local variable (inside function only)
+            let message = "Hello, " + name + "! Welcome to our website.";
+
+            // Display greeting
+            document.getElementById("greeting").innerText = message;
+        }
+    </script>
+
+</body>
+</html>
