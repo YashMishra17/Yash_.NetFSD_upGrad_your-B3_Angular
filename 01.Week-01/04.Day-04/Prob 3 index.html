@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Discount Calculator</title>
+</head>
+<body>
+
+    <h1>Simple Discount Calculator</h1>
+
+    <script>
+        // Store purchase amount
+        let amount = 4500;
+
+        let discount = 0;
+        let finalAmount = 0;
+
+        // Apply discount rules
+        if (amount >= 5000) {
+            discount = amount * 0.20;
+        } else if (amount >= 3000) {
+            discount = amount * 0.10;
+        } else {
+            discount = 0;
+        }
+
+        // Calculate final payable amount
+        finalAmount = amount - discount;
+
+        // Display results
+        document.write("Purchase Amount: ₹" + amount + "<br>");
+        document.write("Discount: ₹" + discount + "<br>");
+        document.write("Final Payable Amount: ₹" + finalAmount);
+    </script>
+
+</body>
+</html>
