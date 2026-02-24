@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Info Display</title>
+</head>
+<body>
+
+    <h1>User Information</h1>
+
+    <button onclick="displayUserInfo(user)">Show User Info</button>
+
+    <p id="name"></p>
+    <p id="age"></p>
+    <p id="city"></p>
+
+    <script>
+        // User object
+        const user = {
+            name: "Rahul",
+            age: 22,
+            city: "Delhi"
+        };
+
+        // Function accepting object as parameter
+        function displayUserInfo(userObj) {
+            document.getElementById("name").innerText = "Name: " + userObj.name;
+            document.getElementById("age").innerText = "Age: " + userObj.age;
+            document.getElementById("city").innerText = "City: " + userObj.city;
+        }
+    </script>
+
+</body>
+</html>
