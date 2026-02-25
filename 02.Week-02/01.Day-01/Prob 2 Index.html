@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Live Form Validation</title>
+</head>
+<body>
+
+    <h2>Registration Form</h2>
+
+    <label>Name:</label><br>
+    <input type="text" id="name" onchange="validateName()">
+    <p id="nameMsg"></p>
+
+    <label>Email:</label><br>
+    <input type="email" id="email" onchange="validateEmail()">
+    <p id="emailMsg"></p>
+
+    <label>Age:</label><br>
+    <input type="number" id="age" onchange="validateAge()">
+    <p id="ageMsg"></p>
+
+    <button onclick="saveData()">Register</button>
+    <p id="finalMsg"></p>
+
+    <script>
+        function validateName() {
+            let name = document.getElementById("name").value;
+            let msg = document.getElementById("nameMsg");
+
+            if (name === "") {
+                msg.innerText = "Name cannot be empty";
+                return false;
+            } else {
+                msg.innerText = "Valid name";
+                return true;
+            }
+        }
+
+        function validateEmail() {
+            let email = document.getElementById("email").value;
+            let msg = document.getElementById("emailMsg");
+
+            if (!email.includes("@")) {
+                msg.innerText = "Email must contain @";
+                return false;
+            } else {
+                msg.innerText = "Valid email";
+                return true;
+            }
+        }
+
+        function validateAge() {
+            let age = document.getElementById("age").value;
+            let msg = document.getElementById("ageMsg");
+
+            if (age <= 18) {
+                msg.innerText = "Age must be greater than 18";
+                return false;
+            } else {
+                msg.innerText = "Valid age";
+                return true;
+            }
+        }
+
+        function saveData() {
+            if (validateName() && validateEmail() && validateAge()) {
+                sessionStorage.setItem("name", document.getElementById("name").value);
+                sessionStorage.setItem("email", document.getElementById("email").value);
+                sessionStorage.setItem("age", document.getElementById("age").value);
+
+                document.getElementById("finalMsg").innerText = "Registration Successful";
+            } else {
+                document.getElementById("finalMsg").innerText = "Please fix errors before submitting";
+            }
+        }
+    </script>
+
+</body>
+</html>
