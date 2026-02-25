@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Filter</title>
+</head>
+<body>
+
+    <h2>Employee Directory</h2>
+
+    <label>Select Job:</label>
+    <select id="jobSelect">
+        <option value="All">All Employees</option>
+        <option value="Manager">Manager</option>
+        <option value="Salesman">Salesman</option>
+        <option value="Developer">Developer</option>
+    </select>
+
+    <button onclick="showEmployees()">Show Emps</button>
+
+    <br><br>
+
+    <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Job</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody id="empTable"></tbody>
+    </table>
+
+    <script>
+        // Array of employee objects
+        const employees = [
+            { id: 1, name: "Rahul", job: "Manager", salary: 60000 },
+            { id: 2, name: "Amit", job: "Salesman", salary: 30000 },
+            { id: 3, name: "Neha", job: "Developer", salary: 50000 },
+            { id: 4, name: "Priya", job: "Salesman", salary: 32000 },
+            { id: 5, name: "Karan", job: "Manager", salary: 65000 }
+        ];
+
+        function showEmployees() {
+            const selectedJob = document.getElementById("jobSelect").value;
+            const tableBody = document.getElementById("empTable");
+            tableBody.innerHTML = "";
+
+            const filteredEmployees =
+                selectedJob === "All"
+                    ? employees
+                    : employees.filter(emp => emp.job === selectedJob);
+
+            filteredEmployees.forEach(emp => {
+                const row = `
+                    <tr>
+                        <td>${emp.id}</td>
+                        <td>${emp.name}</td>
+                        <td>${emp.job}</td>
+                        <td>${emp.salary}</td>
+                    </tr>
+                `;
+                tableBody.innerHTML += row;
+            });
+        }
+    </script>
+
+</body>
+</html>
