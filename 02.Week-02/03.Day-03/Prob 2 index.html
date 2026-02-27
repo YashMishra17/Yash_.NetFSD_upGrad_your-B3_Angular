@@ -1,72 +1,79 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Theme Toggle</title>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            text-align: center;
-            margin-top: 100px;
-        }
-
-        .light-mode {
-            background-color: #ffffff;
-            color: #000000;
-        }
-
-        .dark-mode {
-            background-color: #222222;
-            color: #ffffff;
-        }
-
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-    </style>
+  <title>Task Manager</title>
 </head>
 <body>
 
-    <h2>Theme Toggle Application</h2>
-    <button id="toggleBtn">Toggle Theme</button>
+<h2>Task Manager</h2>
 
-    <script>
-        const body = document.body;
-        const toggleBtn = document.getElementById("toggleBtn");
+<input type="text" id="taskInput" placeholder="Enter task">
+<button onclick="handleAdd()">Add Task</button>
+<button onclick="handleList()">List Tasks</button>
 
-        // Load saved theme
-        const loadTheme = () => {
-            const savedTheme = localStorage.getItem("theme");
+<div id="output"></div>
 
-            if (savedTheme) {
-                body.classList.add(savedTheme);
-            } else {
-                body.classList.add("light-mode");
-            }
-        };
+<script type="module">
 
-        // Toggle theme function
-        const toggleTheme = () => {
-            if (body.classList.contains("light-mode")) {
-                body.classList.remove("light-mode");
-                body.classList.add("dark-mode");
-                localStorage.setItem("theme", "dark-mode");
-            } else {
-                body.classList.remove("dark-mode");
-                body.classList.add("light-mode");
-                localStorage.setItem("theme", "light-mode");
-            }
-        };
+import {
+  addTaskCallback,
+  listTasksCallback,
+  addTaskPromise,
+  listTasksPromise,
+  addTask,
+  listTasks
+} from './taskManager.js';
 
-        // Event handling
-        toggleBtn.addEventListener("click", toggleTheme);
 
-        // Initialize on page load
-        loadTheme();
-    </script>
+/* ---------------------------
+   Callback Usage
+---------------------------- */
+
+const handleAddCallback = () => {
+  const task = document.getElementById("taskInput").value;
+
+  addTaskCallback(task, (message) => {
+    document.getElementById("output").innerHTML = message;
+  });
+};
+
+
+/* ---------------------------
+   Promise Usage
+---------------------------- */
+
+const handleAddPromise = () => {
+  const task = document.getElementById("taskInput").value;
+
+  addTaskPromise(task)
+    .then(message => {
+      document.getElementById("output").innerHTML = message;
+    });
+};
+
+
+/* ---------------------------
+   Async/Await Usage
+---------------------------- */
+
+window.handleAdd = async () => {
+  const task = document.getElementById("taskInput").value;
+
+  const message = await addTask(task);
+  document.getElementById("output").innerHTML = message;
+};
+
+window.handleList = async () => {
+  const tasks = await listTasks();
+
+  const formatted = tasks.map(
+    (t, i) => `<p>${i + 1}. ${t}</p>`
+  ).join("");
+
+  document.getElementById("output").innerHTML = formatted;
+};
+
+</script>
 
 </body>
 </html>
