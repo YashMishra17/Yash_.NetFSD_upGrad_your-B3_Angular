@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Theme Toggle</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .light-mode {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        .dark-mode {
+            background-color: #222222;
+            color: #ffffff;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Theme Toggle Application</h2>
+    <button id="toggleBtn">Toggle Theme</button>
+
+    <script>
+        const body = document.body;
+        const toggleBtn = document.getElementById("toggleBtn");
+
+        // Load saved theme
+        const loadTheme = () => {
+            const savedTheme = localStorage.getItem("theme");
+
+            if (savedTheme) {
+                body.classList.add(savedTheme);
+            } else {
+                body.classList.add("light-mode");
+            }
+        };
+
+        // Toggle theme function
+        const toggleTheme = () => {
+            if (body.classList.contains("light-mode")) {
+                body.classList.remove("light-mode");
+                body.classList.add("dark-mode");
+                localStorage.setItem("theme", "dark-mode");
+            } else {
+                body.classList.remove("dark-mode");
+                body.classList.add("light-mode");
+                localStorage.setItem("theme", "light-mode");
+            }
+        };
+
+        // Event handling
+        toggleBtn.addEventListener("click", toggleTheme);
+
+        // Initialize on page load
+        loadTheme();
+    </script>
+
+</body>
+</html>
