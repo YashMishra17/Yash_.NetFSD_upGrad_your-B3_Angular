@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Data Fetcher</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 500px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        pre {
+            background: #eef2f5;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 4px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Weather Report</h2>
+
+        <button onclick="fetchWeatherWithPromise()">Fetch Weather (Promise)</button>
+        <button onclick="fetchWeatherAsync()">Fetch Weather (Async/Await)</button>
+
+        <pre id="output">Click a button to fetch weather data</pre>
+    </div>
+
+    <script>
+        const output = document.getElementById("output");
+
+        const apiURL =
+            "https://api.open-meteo.com/v1/forecast?latitude=28.61&longitude=77.20&current_weather=true";
+
+        // PROMISE VERSION
+        const fetchWeatherWithPromise = () => {
+            fetch(apiURL)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Network error");
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const weather = data.current_weather;
+
+                    output.textContent = `
+Weather Report (Promise)
+------------------------
+Temperature: ${weather.temperature} °C
+Wind Speed: ${weather.windspeed} km/h
+`;
+                })
+                .catch(error => {
+                    output.textContent = `Error: ${error.message}`;
+                });
+        };
+
+        // ASYNC / AWAIT VERSION
+        const fetchWeatherAsync = async () => {
+            try {
+                const response = await fetch(apiURL);
+
+                if (!response.ok) {
+                    throw new Error("Failed to fetch data");
+                }
+
+                const data = await response.json();
+                const weather = data.current_weather;
+
+                output.textContent = `
+Weather Report (Async/Await)
+----------------------------
+Temperature: ${weather.temperature} °C
+Wind Speed: ${weather.windspeed} km/h
+`;
+            } catch (error) {
+                output.textContent = `Error: ${error.message}`;
+            }
+        };
+    </script>
+
+</body>
+</html>
