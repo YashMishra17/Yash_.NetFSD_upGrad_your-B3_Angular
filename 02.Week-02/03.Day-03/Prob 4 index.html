@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mini Product Search</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        input {
+            padding: 8px;
+            width: 250px;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            width: 300px;
+            margin: auto;
+        }
+
+        li {
+            padding: 8px;
+            background: #f2f2f2;
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+
+        .no-result {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Product Search</h2>
+
+    <input type="text" id="searchInput" placeholder="Search product...">
+
+    <ul id="productList"></ul>
+
+    <script>
+        /* --------------------------
+           Application State
+        --------------------------- */
+
+        const products = [
+            "Laptop",
+            "Mobile",
+            "Headphones",
+            "Keyboard",
+            "Mouse",
+            "Monitor",
+            "Camera"
+        ];
+
+        let filteredProducts = [...products];
+
+        const searchInput = document.getElementById("searchInput");
+        const productList = document.getElementById("productList");
+
+        /* --------------------------
+           Render Function
+        --------------------------- */
+
+        function renderProducts(list) {
+            productList.innerHTML = "";
+
+            if (list.length === 0) {
+                productList.innerHTML = "<li class='no-result'>No Results Found</li>";
+                return;
+            }
+
+            list.forEach(function(product) {
+                const li = document.createElement("li");
+                li.textContent = product;
+                productList.appendChild(li);
+            });
+        }
+
+        /* --------------------------
+           Filter Function
+        --------------------------- */
+
+        function filterProducts(keyword) {
+            filteredProducts = products.filter(function(product) {
+                return product.toLowerCase().includes(keyword.toLowerCase());
+            });
+
+            renderProducts(filteredProducts);
+        }
+
+        /* --------------------------
+           Events
+        --------------------------- */
+
+        // Real-time filtering
+        searchInput.addEventListener("input", function() {
+            const value = searchInput.value.trim();
+            filterProducts(value);
+        });
+
+        // Event Delegation Example (click on product)
+        productList.addEventListener("click", function(event) {
+            if (event.target.tagName === "LI") {
+                alert("You selected: " + event.target.textContent);
+            }
+        });
+
+        /* --------------------------
+           Initial Load
+        --------------------------- */
+
+        renderProducts(products);
+
+    </script>
+
+</body>
+</html>
