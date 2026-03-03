@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FAQ Section</title>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .faq-container {
+            width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+        }
+
+        .question {
+            font-weight: bold;
+            cursor: pointer;
+            padding: 8px;
+            background-color: #e9e9e9;
+        }
+
+        .answer {
+            display: none;
+            padding: 8px;
+            background-color: #f9f9f9;
+        }
+
+        .active {
+            background-color: #d1e7dd;
+            color: #0f5132;
+        }
+    </style>
+</head>
+<body>
+
+<div class="faq-container">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+        <div class="question">1. What courses do you offer?</div>
+        <div class="answer">We offer web development, data science, and UI/UX design courses.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">2. Are the courses online?</div>
+        <div class="answer">Yes, all courses are available online with recorded sessions.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">3. Do you provide certificates?</div>
+        <div class="answer">Yes, certificates are provided after course completion.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">4. What is the course duration?</div>
+        <div class="answer">Courses typically last between 4 to 12 weeks.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">5. Is there placement support?</div>
+        <div class="answer">Yes, we provide placement assistance and interview preparation.</div>
+    </div>
+
+</div>
+
+<script>
+$(document).ready(function(){
+
+    $(".question").click(function(){
+
+        // Toggle the answer related to clicked question
+        $(this).next(".answer").slideToggle();
+
+        // Remove highlight from other questions
+        $(".question").not(this).removeClass("active");
+
+        // Toggle highlight on clicked question
+        $(this).toggleClass("active");
+
+    });
+
+});
+</script>
+
+</body>
+</html>
