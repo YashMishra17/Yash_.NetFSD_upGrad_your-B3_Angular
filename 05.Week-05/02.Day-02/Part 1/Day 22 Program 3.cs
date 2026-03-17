@@ -1,0 +1,97 @@
+﻿/*Week-5 / Day-22/ DAY-2 Hands-On
+
+Level-1 Problem 2: Safe Division Calculator
+Scenario:
+A calculator application must perform division operations safely. If the user enters an invalid value or tries to divide by zero, the system should handle the error gracefully instead of crashing.
+Requirements:
+1.Create a class Calculator.
+2.Create a method Divide(int numerator, int denominator).
+3.Use try-catch-finally blocks to handle errors.
+4.If the denominator is zero, display an appropriate error message.
+5.Ensure the program continues execution after handling the error.
+Technical Constraints:
+1.Use try-catch-finally blocks for exception handling.
+2.Handle DivideByZeroException.
+3.Ensure the finally block always executes.
+Expectations:
+Demonstrate proper use of try-catch-finally blocks.
+Display meaningful error messages.
+Ensure program stability even when errors occur.
+Learning Outcome:
+Understand basic exception handling.
+Use try-catch-finally blocks effectively.
+Handle runtime errors safely.
+Sample Input:
+Numerator = 20
+Denominator = 0
+Sample Output:
+Error: Cannot divide by zero
+Operation completed safely
+*/
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+using System;
+
+// Custom Exception
+class InsufficientBalanceException : Exception
+{
+    public InsufficientBalanceException(string message) : base(message)
+    {
+    }
+}
+
+// BankAccount class
+class BankAccount
+{
+    private double balance;
+
+    // Constructor
+    public BankAccount(double initialBalance)
+    {
+        balance = initialBalance;
+    }
+
+    // Withdraw method
+    public void Withdraw(double amount)
+    {
+        if (amount > balance)
+        {
+            throw new InsufficientBalanceException("Withdrawal amount exceeds available balance");
+        }
+
+        balance -= amount;
+        Console.WriteLine("Withdrawal successful. Remaining balance = " + balance);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Enter Balance: ");
+        double balance = double.Parse(Console.ReadLine());
+
+        Console.Write("Enter Withdraw Amount: ");
+        double amount = double.Parse(Console.ReadLine());
+
+        BankAccount account = new BankAccount(balance);
+
+        try
+        {
+            account.Withdraw(amount);
+        }
+        catch (InsufficientBalanceException ex)
+        {
+            Console.WriteLine("Error: " + ex.Message);
+        }
+        finally
+        {
+            Console.WriteLine("Transaction completed.");
+        }
+
+        Console.WriteLine("Program continues...");
+    }
+}
