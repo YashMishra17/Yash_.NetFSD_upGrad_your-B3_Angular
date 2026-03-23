@@ -28,26 +28,25 @@ How to wait for multiple tasks to complete*/
 ///////////////////////////////////////////////////////////////////////////////////////////
 
 using System;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace ConsoleApp8
 {
     class Program
     {
-        static void Main()
+        static async Task Main()
         {
             try
             {
                 Console.WriteLine("Starting report generation...\n");
 
-                // Run all tasks concurrently
-                Task t1 = Task.Run(() => GenerateSalesReport());
-                Task t2 = Task.Run(() => GenerateInventoryReport());
-                Task t3 = Task.Run(() => GenerateCustomerReport());
+                // Run tasks concurrently
+                Task t1 = GenerateSalesReport();
+                Task t2 = GenerateInventoryReport();
+                Task t3 = GenerateCustomerReport();
 
-                // Wait for all tasks to complete
-                Task.WaitAll(t1, t2, t3);
+                // Wait for all tasks
+                await Task.WhenAll(t1, t2, t3);
 
                 Console.WriteLine("\nAll reports generated successfully!");
             }
@@ -60,27 +59,28 @@ namespace ConsoleApp8
         }
 
         // 1. Sales Report
-        static void GenerateSalesReport()
+        static async Task GenerateSalesReport()
         {
             Console.WriteLine("Sales Report started...");
-            Thread.Sleep(3000); // simulate work
+            await Task.Delay(3000); // NON-BLOCKING delay
             Console.WriteLine("Sales Report completed.");
         }
 
         // 2. Inventory Report
-        static void GenerateInventoryReport()
+        static async Task GenerateInventoryReport()
         {
             Console.WriteLine("Inventory Report started...");
-            Thread.Sleep(2000); // simulate work
+            await Task.Delay(2000);
             Console.WriteLine("Inventory Report completed.");
         }
 
         // 3. Customer Report
-        static void GenerateCustomerReport()
+        static async Task GenerateCustomerReport()
         {
             Console.WriteLine("Customer Report started...");
-            Thread.Sleep(2500); // simulate work
+            await Task.Delay(2500);
             Console.WriteLine("Customer Report completed.");
         }
     }
+}
 }
