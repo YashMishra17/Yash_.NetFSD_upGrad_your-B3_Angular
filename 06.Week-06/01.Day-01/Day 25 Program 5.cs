@@ -35,12 +35,13 @@ Students will learn how to:
 
 using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace ConsoleApp8
 {
     class Program
     {
-        static void Main()
+        static async Task Main()
         {
             // Configure Trace to write into a file
             Trace.Listeners.Add(new TextWriterTraceListener(@"C:\CSharp\OrderLog.txt"));
@@ -50,10 +51,10 @@ namespace ConsoleApp8
             {
                 Trace.WriteLine("Order Processing Started");
 
-                ValidateOrder();
-                ProcessPayment();
-                UpdateInventory();
-                GenerateInvoice();
+                await ValidateOrder();
+                await ProcessPayment();
+                await UpdateInventory();
+                await GenerateInvoice();
 
                 Trace.TraceInformation("Order processed successfully.");
             }
@@ -66,20 +67,19 @@ namespace ConsoleApp8
             Console.ReadLine();
         }
 
-        static void ValidateOrder()
+        static async Task ValidateOrder()
         {
             Trace.WriteLine("Step 1: Validating Order...");
-            // simulate work
-            System.Threading.Thread.Sleep(1000);
+            await Task.Delay(1000); // NON-BLOCKING
             Trace.TraceInformation("Order validated successfully.");
         }
 
-        static void ProcessPayment()
+        static async Task ProcessPayment()
         {
             Trace.WriteLine("Step 2: Processing Payment...");
-            System.Threading.Thread.Sleep(1000);
+            await Task.Delay(1000);
 
-            // Simulate failure (for debugging purpose)
+            // Simulate failure (change to false to test)
             bool paymentSuccess = true;
 
             if (!paymentSuccess)
@@ -90,17 +90,17 @@ namespace ConsoleApp8
             Trace.TraceInformation("Payment processed successfully.");
         }
 
-        static void UpdateInventory()
+        static async Task UpdateInventory()
         {
             Trace.WriteLine("Step 3: Updating Inventory...");
-            System.Threading.Thread.Sleep(1000);
+            await Task.Delay(1000);
             Trace.TraceInformation("Inventory updated.");
         }
 
-        static void GenerateInvoice()
+        static async Task GenerateInvoice()
         {
             Trace.WriteLine("Step 4: Generating Invoice...");
-            System.Threading.Thread.Sleep(1000);
+            await Task.Delay(1000);
             Trace.TraceInformation("Invoice generated.");
         }
     }
