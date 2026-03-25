@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "DESKTOP-MBQ27TB\\SQLEXPRESSDESKTOP-MBQ27TB\\SQLEXPRESS; Database=Apr2025Db; Integrated Security=true; TrustServerCertificate=True;"
+  }
+}
