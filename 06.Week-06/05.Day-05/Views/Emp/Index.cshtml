@@ -1,0 +1,46 @@
+﻿@using WebApplication1.Models
+@model List<Employee>
+
+<h1 class="display-5">Employee Controller - Index</h1>
+
+<a class="btn btn-primary" asp-action="Create">Create New</a>
+<hr />
+
+<table border="1" cellpadding="10" cellspacing="0" class="table">
+    <thead>
+        <tr>
+            <th>Emp No</th>
+            <th>Name</th>
+            <th>Job</th>
+            <th>Salary</th>
+            <th>Dept No</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (Employee item in Model)
+        {
+            <tr>
+                <td>@item.Empno</td>
+                <td>@item.Ename</td>
+                <td>@item.Job</td>
+                <td>@item.Salary</td>
+                <td>@item.Deptno</td>
+                <td>
+                    <a asp-controller="Emp"
+                       asp-action="Details"
+                       asp-route-id="@item.Empno">Details</a> |
+
+                    <a asp-controller="Emp"
+                       asp-action="Edit"
+                       asp-route-id="@item.Empno">Edit</a>  |
+
+                    <a asp-controller="Emp"
+                       asp-action="Delete"
+                       asp-route-id="@item.Empno">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

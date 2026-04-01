@@ -1,0 +1,34 @@
+﻿@using WebApplication1.Models
+@model Employee
+
+<h1 class="display-5">Employee Controller - Delete </h1>
+
+
+@if (Model == null)
+{
+    <p>Requested Employee Details are not available</p>
+}
+else
+{
+    <div>
+        Employee Id : @Model.Empno  <br />
+        Employee Name : @Model.Ename  <br />
+        Employee Job : @Model.Job  <br />
+        Employee Salary : @Model.Salary  <br />
+        Employee Deptno : @Model.Deptno   <br />
+    </div>
+}
+
+
+<form asp-action="delete" method="post">
+    <input type="hidden" name="id" value="@Model.Empno" />
+    <p>Do you want to delete this employee details?</p>
+    <button type="submit" class="btn btn-success">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</form>
+
+
+
+
+
+

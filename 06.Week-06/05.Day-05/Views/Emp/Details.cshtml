@@ -1,0 +1,27 @@
+﻿@using WebApplication1.Models
+@model Employee
+
+<h1 class="display-5">Employee Controller - Details </h1>
+
+
+@if (Model == null)
+{
+    <p>Requested Employee Details are not available</p>
+}
+else
+{
+    <div>
+        Employee Id : @Model.Empno  <br />
+        Employee Name : @Model.Ename  <br />
+        Employee Job : @Model.Job  <br />
+        Employee Salary : @Model.Salary  <br />
+        Employee Deptno : @Model.Deptno   <br />
+    </div>
+}
+
+
+
+
+
+
+
