@@ -1,0 +1,31 @@
+﻿<h2>Feedback Form</h2>
+
+<form method="post" asp-action="Submit" asp-controller="Feedback">
+
+    <div>
+        <label>Name:</label>
+        <input type="text" name="name" required />
+    </div>
+
+    <div>
+        <label>Comments:</label>
+        <textarea name="comments" required></textarea>
+    </div>
+
+    <div>
+        <label>Rating (1–5):</label>
+        <input type="number" name="rating" min="1" max="5" required />
+    </div>
+
+    <br />
+    <button type="submit">Submit Feedback</button>
+
+</form>
+
+<hr />
+
+@if (ViewData["Message"] != null)
+{
+    <h3>@ViewData["Message"]</h3>
+    <p>Thank you, @ViewData["Name"]</p>
+}
