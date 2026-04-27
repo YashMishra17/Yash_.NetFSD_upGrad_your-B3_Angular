@@ -1,0 +1,33 @@
+<h2>Contact Management</h2>
+
+<input [(ngModel)]="searchText" placeholder="Search..." />
+
+<button (click)="toggleLimit()">
+  Show {{ showLimit === 5 ? 'More' : 'Less' }}
+</button>
+
+<table border="1">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Status</th>
+    <th>Action</th>
+  </tr>
+
+  <tr *ngFor="let c of contacts | search:searchText | slice:0:showLimit">
+
+    <td>{{ c.name | titlecase }}</td>
+    <td>{{ c.email | lowercase }}</td>
+    <td>{{ c.phone | phone }}</td>
+
+    <td [style.color]="c.status ? 'green' : 'red'">
+      {{ c.status | status }}
+    </td>
+
+    <td>
+      <button (click)="toggleStatus(c)">Toggle</button>
+    </td>
+
+  </tr>
+</table>
