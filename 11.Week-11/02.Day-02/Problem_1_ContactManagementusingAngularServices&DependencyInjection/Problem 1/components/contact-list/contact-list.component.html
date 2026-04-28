@@ -1,0 +1,51 @@
+<h3 class="mb-3">Add Contact</h3>
+
+<form (ngSubmit)="addContact()" class="row g-3">
+
+  <div class="col-md-2">
+    <input [(ngModel)]="newContact.id" name="id" class="form-control" placeholder="ID" required>
+  </div>
+
+  <div class="col-md-3">
+    <input [(ngModel)]="newContact.name" name="name" class="form-control" placeholder="Name" required>
+  </div>
+
+  <div class="col-md-3">
+    <input [(ngModel)]="newContact.email" name="email" class="form-control" placeholder="Email" required>
+  </div>
+
+  <div class="col-md-3">
+    <input [(ngModel)]="newContact.phone" name="phone" class="form-control" placeholder="Phone" required>
+  </div>
+
+  <div class="col-md-1">
+    <button class="btn btn-success w-100">Add</button>
+  </div>
+
+</form>
+
+<hr>
+
+<h3 class="mt-4">Contact List</h3>
+
+<table class="table table-bordered table-striped mt-3">
+  <thead class="table-dark">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    @for (c of contacts; track c.id) {
+      <tr>
+        <td>{{ c.id }}</td>
+        <td>{{ c.name }}</td>
+        <td>{{ c.email }}</td>
+        <td>{{ c.phone }}</td>
+      </tr>
+    }
+  </tbody>
+</table>
